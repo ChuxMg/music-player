@@ -1,33 +1,23 @@
-import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native'
-import { useFonts } from 'expo-font'
 import { Stack } from 'expo-router'
-import * as SplashScreen from 'expo-splash-screen'
 import { StatusBar } from 'expo-status-bar'
-import { useEffect } from 'react'
-import { StyleSheet, Text, View } from 'react-native'
-import 'react-native-reanimated'
+import { SafeAreaProvider } from 'react-native-safe-area-context'
 
-
-
-export default function App() {
-	
-
+const App = () => {
 	return (
-		<View style={styles.container}>
-			<Text>
-				<Text>Start working on the app!</Text>
-				<StatusBar style='auto'/>
-			</Text>
-		</View>
+		<SafeAreaProvider>
+			<RootNavigation />
+
+			<StatusBar style="auto" />
+		</SafeAreaProvider>
 	)
 }
 
+const RootNavigation = () => {
+	return (
+		<Stack>
+			<Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+		</Stack>
+	)
+}
 
-const styles = StyleSheet.create({
-	container: {
-		flex: 1,
-		backgroundColor: "#fff",
-		alignItems: "center",
-		justifyContent: "center"
-	}
-})
+export default App
